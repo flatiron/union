@@ -1,0 +1,21 @@
+{
+  "name": "flatiron-http",
+  "description": "The http 'middleware' component used by, but decoupled from flatiron",
+  "version": "0.0.0",
+  "author": "Nodejitsu Inc. <info@nodejitsu.com>",
+  "contributors": [
+    { "name": "Charlie Robbins", "email": "charlie.robbins@gmail.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/flatiron/flatiron-http.git" 
+  },
+  "devDependencies": {
+    "vows": "0.5.x"
+  },
+  "scripts": {
+    "test": "vows test/**/*-test.js --spec -i"
+  },
+  "main": "./lib",
+  "engines": { "node": ">= 0.4.0" }
+}
