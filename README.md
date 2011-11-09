@@ -13,8 +13,15 @@ var fs = require('fs'),
 var router = new sugarskull.http.Router();
 
 var server = union.createServer({
-  use: [favicon('./favicon.png'))],
-  router: router
+  before: [
+    favicon('./favicon.png'),
+    function (req, res) {
+      var found = router.dispatch(req, res);
+      if (!found) {
+        res.emit('next');
+      }
+    }
+  ]
 });
 
 router.get(/foo/, function () {
@@ -27,7 +34,7 @@ router.post(/foo/, { stream: true }, function () {
       res = this.res,
       writeStream;
       
-  writeStream = fs.createWriteStream(Date.now() + '-foo.txt'))
+  writeStream = fs.createWriteStream(Date.now() + '-foo.txt');
   req.pipe(writeStream);
   
   writeStream.on('close', function () {
@@ -52,7 +59,36 @@ console.log('union with sugarskull running on 8080');
   $ [sudo] npm install union
 ````
 
+## Usage:
+
+### union.createServer(options)
+
+The `options` object is required. Options include:
+
+#### options.before
+
+`options.before` is an array of [connect](https://github.com/senchalabs/connect)-compatible middlewares, which are used to route and serve incoming requests. For instance, in the example, `favicon` is a middleware which handles requests for `/favicon.ico`.
+
+Because union's request handling is connect-compatible, all existing connect middlewares should work out-of-the-box with union.
+
+#### options.after
+
+`options.after` is an array of stream middlewares, which are applied after the request handlers in `options.before`. Stream middlewares inherit from `union.ResponseStream`.
+
+#### options.limit (*optional*)
+
+Union allows you to limit the size of buffered streams. If undefined, there is no limit.
+
+### union.RequestStream
+
+Union supplies this constructor as a basic request stream middleware from which to inherit.
+
+### union.ResponseStream
+
+Union supplies this constructor as a basic response stream middleware from which to inherit.
+
 ## Tests
+
 All tests are written with [vows][0] and should be run with [npm][1]:
 
 ``` bash
