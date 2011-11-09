@@ -67,23 +67,38 @@ The `options` object is required. Options include:
 
 #### options.before
 
-`options.before` is an array of [connect](https://github.com/senchalabs/connect)-compatible middlewares, which are used to route and serve incoming requests. For instance, in the example, `favicon` is a middleware which handles requests for `/favicon.ico`.
+`options.before` is an array of middlewares, which are used to route and serve incoming requests. For instance, in the example, `favicon` is a middleware which handles requests for `/favicon.ico`.
 
-Because union's request handling is connect-compatible, all existing connect middlewares should work out-of-the-box with union.
+Union's request handling is [connect](https://github.com/senchalabs/connect)-compatible, meaning that all existing connect middlewares should work out-of-the-box with union.
+
+In addition, the response object passed to middlewares listens for a "next" event, which is equivalent to calling `next()`. Flatiron middlewares are written in this manner, meaning they are not reverse-compatible with connect.
 
 #### options.after
 
-`options.after` is an array of stream middlewares, which are applied after the request handlers in `options.before`. Stream middlewares inherit from `union.ResponseStream`.
+`options.after` is an array of stream filters, which are applied after the request handlers in `options.before`. Stream filters inherit from `union.ResponseStream`, which implements the Node.js core streams api with a bunch of other goodies.
+
+The advantage to streaming middlewares is that they do not require buffering the entire stream in order to execute their function.
 
 #### options.limit (*optional*)
 
-Union allows you to limit the size of buffered streams. If undefined, there is no limit.
+This argument is passed to internal instantiations of `union.BufferedStream`.
 
-### union.RequestStream
+## union.BufferedStream(limit)
 
-Union supplies this constructor as a basic request stream middleware from which to inherit.
+This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
+
+## union.HttpStream(options);
+
+This constructor inherits from `union.BufferedStream` and returns a stream with these extra properties:
+
+* *httpStream.url:* The url from the request.
+* *httpStream.headers:* The HTTP headers associated with the stream.
+* *httpStream.method:* The HTTP method ("GET", "POST", etc).
+* *httpStream.query:* The querystring associated with the stream (if applicable).
 
 ### union.ResponseStream
+
+This constructor inherits from `union.HttpStream`, and is additionally writeable.
 
 Union supplies this constructor as a basic response stream middleware from which to inherit.
 
