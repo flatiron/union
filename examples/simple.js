@@ -6,8 +6,15 @@ var fs = require('fs'),
 var router = new sugarskull.http.Router();
 
 var server = union.createServer({
-  use: [favicon('./favicon.png'))],
-  router: router
+  before: [
+    favicon('./favicon.png'),
+    function (req, res) {
+      var found = router.dispatch(req, res);
+      if (!found) {
+        res.emit('next');
+      }
+    }
+  ]
 });
 
 router.get(/foo/, function () {
@@ -20,7 +27,7 @@ router.post(/foo/, { stream: true }, function () {
       res = this.res,
       writeStream;
       
-  writeStream = fs.createWriteStream(Date.now() + '-foo.txt'))
+  writeStream = fs.createWriteStream(Date.now() + '-foo.txt');
   req.pipe(writeStream);
   
   writeStream.on('close', function () {
