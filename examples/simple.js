@@ -1,13 +1,12 @@
-var path = require('path'),
-    fs = require('fs'),
-    http = require('../lib'),
+var fs = require('fs'),
+    union = require('../lib'),
     sugarskull = require('sugarskull'),
     favicon = require('./middleware/favicon');
 
 var router = new sugarskull.http.Router();
 
-var server = http.createServer({
-  use: [favicon(path.join(__dirname, 'favicon.png'))],
+var server = union.createServer({
+  use: [favicon('./favicon.png'))],
   router: router
 });
 
@@ -17,16 +16,18 @@ router.get(/foo/, function () {
 });
 
 router.post(/foo/, { stream: true }, function () {
-  var self = this,
-      writeMe = fs.createWriteStream(path.join(__dirname, Date.now() + '-foo.txt'))
+  var req = this.req,
+      res = this.res,
+      writeStream;
+      
+  writeStream = fs.createWriteStream(Date.now() + '-foo.txt'))
+  req.pipe(writeStream);
   
-  this.req.pipe(writeMe);
-  
-  writeMe.on('close', function () {
-    self.res.writeHead(200, { 'Content-Type': 'text/plain' });
-    self.res.end('wrote to a stream!');
+  writeStream.on('close', function () {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('wrote to a stream!');
   });
 });
 
 server.listen(8080);
-console.log('flatiron-http running on 8080');
+console.log('union with sugarskull running on 8080');
