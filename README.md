@@ -83,11 +83,11 @@ The advantage to streaming middlewares is that they do not require buffering the
 
 This argument is passed to internal instantiations of `union.BufferedStream`.
 
-## union.BufferedStream(limit)
+### union.BufferedStream(limit)
 
 This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
 
-## union.HttpStream(options);
+### union.HttpStream(options);
 
 This constructor inherits from `union.BufferedStream` and returns a stream with these extra properties:
 
