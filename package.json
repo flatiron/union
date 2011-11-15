@@ -11,7 +11,8 @@
     "url": "http://github.com/flatiron/flatiron-http.git" 
   },
   "dependencies": {
-    "morestreams": "https://github.com/dominictarr/morestreams/tarball/master"
+    "morestreams": "https://github.com/dominictarr/morestreams/tarball/master",
+    "qs": "0.3.2"
   },
   "devDependencies": {
     "vows": "0.5.x"
