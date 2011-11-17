@@ -1,4 +1,5 @@
 node_modules
 npm-debug.log
+*.txt
 examples/*.txt
 .DS_Store

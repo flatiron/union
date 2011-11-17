@@ -1,9 +1,9 @@
 var fs = require('fs'),
     union = require('../lib'),
-    sugarskull = require('sugarskull'),
+    director = require('director'),
     favicon = require('./middleware/favicon');
 
-var router = new sugarskull.http.Router();
+var router = new director.http.Router();
 
 var server = union.createServer({
   before: [
@@ -37,4 +37,4 @@ router.post(/foo/, { stream: true }, function () {
 });
 
 server.listen(8080);
-console.log('union with sugarskull running on 8080');
+console.log('union with director running on 8080');

@@ -15,6 +15,7 @@
     "qs": "0.3.2"
   },
   "devDependencies": {
+    "director": "1.x.x",
     "vows": "0.5.x"
   },
   "scripts": {
