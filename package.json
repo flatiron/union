@@ -1,7 +1,7 @@
 {
   "name": "union",
   "description": "A hybrid buffered / streaming middleware kernel backwards compatible with connect.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Nodejitsu Inc. <info@nodejitsu.com>",
   "contributors": [
     { "name": "Charlie Robbins", "email": "charlie.robbins@gmail.com" }
@@ -9,6 +9,10 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/flatiron/flatiron-http.git" 
+  },
+  "dependencies": {
+    "morestreams": "https://github.com/dominictarr/morestreams/tarball/master",
+    "qs": "0.3.2"
   },
   "devDependencies": {
     "vows": "0.5.x"
