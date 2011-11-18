@@ -83,6 +83,20 @@ The advantage to streaming middlewares is that they do not require buffering the
 
 This argument is passed to internal instantiations of `union.BufferedStream`.
 
+#### options.https (*optional*)
+
+This argument specifies the certificate and key necessary to create an instance of `https.Server`:
+
+``` js
+  {
+    https: {
+      cert: 'path/to/cert.pem',
+      key: 'path/to/key.pem',
+      ca: 'path/to/ca.pem'
+    }
+  }
+```
+
 ### union.BufferedStream(limit)
 
 This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
