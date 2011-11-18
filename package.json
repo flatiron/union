@@ -15,10 +15,11 @@
   },
   "devDependencies": {
     "director": "1.x.x",
+    "request": "2.x.x",
     "vows": "0.5.x"
   },
   "scripts": {
-    "test": "vows test/**/*-test.js --spec -i"
+    "test": "vows test/*-test.js --spec -i"
   },
   "main": "./lib",
   "engines": { "node": ">= 0.4.0" }
