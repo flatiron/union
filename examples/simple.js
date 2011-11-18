@@ -17,17 +17,17 @@ var server = union.createServer({
   ]
 });
 
-router.get(/foo/, function () {
+router.get(/\/foo/, function () {
   this.res.writeHead(200, { 'Content-Type': 'text/plain' })
   this.res.end('hello world\n');
 });
 
-router.post(/foo/, { stream: true }, function () {
+router.post(/\/foo/, { stream: true }, function () {
   var req = this.req,
       res = this.res,
       writeStream;
       
-  writeStream = fs.createWriteStream(Date.now() + '-foo.txt');
+  writeStream = fs.createWriteStream(__dirname + '/' + Date.now() + '-foo.txt');
   req.pipe(writeStream);
   
   writeStream.on('close', function () {
