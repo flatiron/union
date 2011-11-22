@@ -21,7 +21,7 @@ vows.describe('union/simple').addBatch({
   "When using union": {
     "a simple http server": {
       topic: function () {
-        server = spawn('node', [simpleScript]);
+        server = spawn(process.argv[0], [simpleScript]);
         server.stdout.on('data', this.callback.bind(this, null));
       },
       "a GET request to `/foo`": {
@@ -43,3 +43,4 @@ vows.describe('union/simple').addBatch({
     }
   }
 }).export(module);
+
