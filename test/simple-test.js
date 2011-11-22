@@ -11,10 +11,12 @@ var assert = require('assert'),
     path = require('path'),
     spawn = require('child_process').spawn,
     request = require('request'),
-    vows = require('vows');
+    vows = require('vows'),
+    macros = require('./helpers/macros');
 
 var examplesDir = path.join(__dirname, '..', 'examples'),
     simpleScript = path.join(examplesDir, 'simple.js'),
+    fooURI = 'http://localhost:8080/foo',
     server;
 
 vows.describe('union/simple').addBatch({
@@ -26,12 +28,20 @@ vows.describe('union/simple').addBatch({
       },
       "a GET request to `/foo`": {
         topic: function () {
-          request({ uri: 'http://localhost:8080/foo' }, this.callback);
+          request({ uri: fooURI }, this.callback);
         },
         "it should respond with `hello world`": function (err, res, body) {
-          assert.isTrue(!err);
-          assert.equal(res.statusCode, 200);
+          macros.assertValidResponse(err, res);
           assert.equal(body, 'hello world\n');
+        }
+      },
+      "a POST request to `/foo`": {
+        topic: function () {
+          request.post({ uri: fooURI }, this.callback);
+        },
+        "it should respond with `wrote to a stream!`": function (err, res, body) {
+          macros.assertValidResponse(err, res);
+          assert.equal(body, 'wrote to a stream!');
         }
       }
     }
