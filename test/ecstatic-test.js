@@ -27,8 +27,18 @@ vows.describe('union/ecstatic').addBatch({
       },
       "should respond with `hello world`": function (err, res, body) {
         assert.isNull(err);
-        assert.equal(body, 'hello world');
+        assert.equal(body, 'hello world\n');
+      }
+    },
+    "a request to /404.txt (which does not exist)": {
+      topic: function () {
+        request({ uri: 'http://localhost:8081/404.txt' }, this.callback);
+      },
+      "should respond with 404 status code": function (err, res, body) {
+        assert.isNull(err);
+        assert.equal(res.statusCode, 404);
       }
     }
   }
 }).export(module);
+
