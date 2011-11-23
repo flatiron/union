@@ -1,4 +1,4 @@
-# union
+# union [![Build Status](https://secure.travis-ci.org/flatiron/union.png)](http://travis-ci.org/flatiron/union)
 
 A hybrid buffered / streaming middleware kernel backwards compatible with connect.
 
