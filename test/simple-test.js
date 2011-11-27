@@ -14,7 +14,7 @@ var assert = require('assert'),
     vows = require('vows'),
     macros = require('./helpers/macros');
 
-var examplesDir = path.join(__dirname, '..', 'examples'),
+var examplesDir = path.join(__dirname, '..', 'examples', 'simple'),
     simpleScript = path.join(examplesDir, 'simple.js'),
     fooURI = 'http://localhost:8080/foo',
     server;
