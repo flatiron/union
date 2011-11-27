@@ -1,6 +1,6 @@
 var fs = require('fs'),
     path = require('path'),
-    union = require('../lib'),
+    union = require('../../lib'),
     director = require('director'),
     favicon = require('./middleware/favicon');
 
