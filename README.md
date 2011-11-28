@@ -43,8 +43,8 @@ router.post(/foo/, { stream: true }, function () {
   });
 });
 
-server.listen(8080);
-console.log('union with director running on 8080');
+server.listen(9090);
+console.log('union with director running on 9090');
 ```
 
 ## Installation

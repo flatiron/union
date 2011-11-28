@@ -16,7 +16,7 @@ var assert = require('assert'),
 
 var examplesDir = path.join(__dirname, '..', 'examples', 'simple'),
     simpleScript = path.join(examplesDir, 'simple.js'),
-    fooURI = 'http://localhost:8080/foo',
+    fooURI = 'http://localhost:9090/foo',
     server;
 
 vows.describe('union/simple').addBatch({
