@@ -11,6 +11,7 @@
     "url": "http://github.com/flatiron/flatiron-http.git" 
   },
   "dependencies": {
+    "pkginfo": "0.2.x",
     "qs": "0.3.2"
   },
   "devDependencies": {

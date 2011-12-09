@@ -97,6 +97,16 @@ This argument specifies the certificate and key necessary to create an instance 
   }
 ```
 
+#### options.headers (*optional*)
+
+Object representing a set of headers to set in every outgoing response:
+
+``` js
+  {
+    'x-powered-by': 'your-sweet-application v10.9.8'	
+  }
+```
+
 ### union.BufferedStream(limit)
 
 This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
