@@ -76,6 +76,7 @@ console.log('union with director running on 9090');
 The `options` object is required. Options include:
 
 Specification
+
 ```
   function createServer(options)
 
@@ -99,6 +100,7 @@ Specification
 ```
 
 Example
+
 ```js
 var server = union.createServer({
   before: [
@@ -137,6 +139,7 @@ An example of the `headers` option.
 This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
 
 Specification
+
 ```
   function BufferedStream(limit)
   
@@ -145,6 +148,7 @@ Specification
 ```
 
 Example
+
 ```js
 var bs = union.BufferedStream(n);
 ```
@@ -153,11 +157,13 @@ var bs = union.BufferedStream(n);
 This constructor inherits from `union.BufferedStream` and returns a stream with these extra properties:
 
 Specification
+
 ```
   function HttpStream()
 ```
 
 Example
+
 ```js
 var hs = union.HttpStream();
 ```
@@ -168,6 +174,7 @@ var hs = union.HttpStream();
 The url from the request.
 
 Example
+
 ```js
 httpStream.url = '';
 ```
@@ -176,6 +183,7 @@ httpStream.url = '';
 The HTTP headers associated with the stream.
 
 Example
+
 ```js
 httpStream.headers = '';
 ``` 
@@ -184,6 +192,7 @@ httpStream.headers = '';
 The HTTP method ("GET", "POST", etc).
 
 Example
+
 ```js
 httpStream.method = 'POST';
 ```
@@ -192,6 +201,7 @@ httpStream.method = 'POST';
 The querystring associated with the stream (if applicable).
 
 Example
+
 ```js
 httpStream.query = '';
 ```
@@ -200,11 +210,13 @@ httpStream.query = '';
 This constructor inherits from `union.HttpStream`, and is additionally writeable. Union supplies this constructor as a basic response stream middleware from which to inherit.
 
 Specification
+
 ```
   function ResponseStream()
 ```
 
 Example
+
 ```js
 var rs = union.ResponseStream();
 ```
