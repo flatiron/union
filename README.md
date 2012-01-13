@@ -86,16 +86,21 @@ Specification
   An object literal that represents the configuration for the server.
     
     @option before {Array} 
-    The `before` value is an array of middlewares, which are used to route and serve incoming requests. For instance, in the example, `favicon` is a middleware which handles requests for `/favicon.ico`.
+    The `before` value is an array of middlewares, which are used to route and serve incoming 
+    requests. For instance, in the example, `favicon` is a middleware which handles requests 
+    for `/favicon.ico`.
 
     @option after {Array} 
-    The `after` value is an array of stream filters, which are applied after the request handlers in `options.before`. Stream filters inherit from `union.ResponseStream`, which implements the Node.js core streams api with a bunch of other goodies.
+    The `after` value is an array of stream filters, which are applied after the request handlers 
+    in `options.before`. Stream filters inherit from `union.ResponseStream`, which implements the 
+    Node.js core streams api with a bunch of other goodies.
 
     @option limit {Object} 
     (optional) A value, passed to internal instantiations of `union.BufferedStream`.
 
     @option https {Object} 
-    (optional) A value that specifies the certificate and key necessary to create an instance of `https.Server`.
+    (optional) A value that specifies the certificate and key necessary to create an instance of 
+    `https.Server`.
 
     @option headers {Object} 
     (optional) An object representing a set of headers to set in every outgoing response
