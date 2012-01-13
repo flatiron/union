@@ -68,6 +68,8 @@ server.listen(9090);
 console.log('union with director running on 9090');
 ```
 
+To demonstrate the code, we use [director](https://github.com/flatiron/director). A light-weight, Client AND Server side URL-Router for Node.js and Single Page Apps!
+
 # API
 
 ## union Static Members
