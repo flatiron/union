@@ -70,27 +70,35 @@ console.log('union with director running on 9090');
 
 # API
 
-## `union` Static Members
+## union Static Members
 
 ### createServer(options)
 The `options` object is required. Options include:
 
+Specification
 ```
   function createServer(options)
-  @param options {Object} an object literal that represents the configuration for the server.
+
+  @param options {Object} 
+  An object literal that represents the configuration for the server.
     
-    @option before {Array} The `before` value is an array of middlewares, which are used to route and serve incoming requests. For instance, in the example, `favicon` is a middleware which handles requests for `/favicon.ico`.
+    @option before {Array} 
+    The `before` value is an array of middlewares, which are used to route and serve incoming requests. For instance, in the example, `favicon` is a middleware which handles requests for `/favicon.ico`.
 
-    @option after {Array} The `after` value is an array of stream filters, which are applied after the request handlers in `options.before`. Stream filters inherit from `union.ResponseStream`, which implements the Node.js core streams api with a bunch of other goodies.
+    @option after {Array} 
+    The `after` value is an array of stream filters, which are applied after the request handlers in `options.before`. Stream filters inherit from `union.ResponseStream`, which implements the Node.js core streams api with a bunch of other goodies.
 
-    @option limit {Object} (optional) A value, passed to internal instantiations of `union.BufferedStream`.
+    @option limit {Object} 
+    (optional) A value, passed to internal instantiations of `union.BufferedStream`.
 
-    @option https {Object} (optional) A value that specifies the certificate and key necessary to create an instance of `https.Server`.
+    @option https {Object} 
+    (optional) A value that specifies the certificate and key necessary to create an instance of `https.Server`.
 
-    @option headers {Object} (optional) An object representing a set of headers to set in every outgoing response
-
+    @option headers {Object} 
+    (optional) An object representing a set of headers to set in every outgoing response
 ```
 
+Example
 ```js
 var server = union.createServer({
   before: [
@@ -128,11 +136,15 @@ An example of the `headers` option.
 ## BufferedStream Constructor
 This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
 
+Specification
 ```
   function BufferedStream(limit)
-  @param limit {Number} the limit for which the stream can be buffered
+  
+  @param limit {Number} 
+  the limit for which the stream can be buffered
 ```
 
+Example
 ```js
 var bs = union.BufferedStream(n);
 ```
@@ -140,6 +152,12 @@ var bs = union.BufferedStream(n);
 ## HttpStream Constructor
 This constructor inherits from `union.BufferedStream` and returns a stream with these extra properties:
 
+Specification
+```
+  function HttpStream()
+```
+
+Example
 ```js
 var hs = union.HttpStream();
 ```
@@ -149,6 +167,7 @@ var hs = union.HttpStream();
 ### url
 The url from the request.
 
+Example
 ```js
 httpStream.url = '';
 ```
@@ -156,6 +175,7 @@ httpStream.url = '';
 ### headers
 The HTTP headers associated with the stream.
 
+Example
 ```js
 httpStream.headers = '';
 ``` 
@@ -163,6 +183,7 @@ httpStream.headers = '';
 ### method
 The HTTP method ("GET", "POST", etc).
 
+Example
 ```js
 httpStream.method = 'POST';
 ```
@@ -170,6 +191,7 @@ httpStream.method = 'POST';
 ### query
 The querystring associated with the stream (if applicable).
 
+Example
 ```js
 httpStream.query = '';
 ```
@@ -177,6 +199,12 @@ httpStream.query = '';
 ## ResponseStream Constructor
 This constructor inherits from `union.HttpStream`, and is additionally writeable. Union supplies this constructor as a basic response stream middleware from which to inherit.
 
+Specification
+```
+  function ResponseStream()
+```
+
+Example
 ```js
 var rs = union.ResponseStream();
 ```
