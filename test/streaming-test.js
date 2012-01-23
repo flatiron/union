@@ -15,11 +15,13 @@ vows.describe('union/streaming').addBatch({
           before: [
             function (req, res, next) {
               req.on('end', function () {
-                self.callback(null, req.chunks);
+                req.pipe(res);
+                process.nextTick(function () {
+                  self.callback(null, chunks);
+                })
               });
             }
-          ],
-          stream: true
+          ]
         }).listen(9000, function () {
           request.post('http://localhost:9000').write('hello world');
         });
