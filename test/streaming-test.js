@@ -14,11 +14,15 @@ vows.describe('union/streaming').addBatch({
         union.createServer({
           before: [
             function (req, res, next) {
+              var chunks = '';
+
+              req.buffer = false;
+              req.on('data', function (chunk) {
+                chunks += chunk;
+              });
+
               req.on('end', function () {
-                req.pipe(res);
-                process.nextTick(function () {
-                  self.callback(null, chunks);
-                })
+                self.callback(null, chunks);
               });
             }
           ]
