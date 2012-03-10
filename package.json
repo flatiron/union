@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/flatiron/flatiron-http.git" 
+    "url": "http://github.com/flatiron/union.git"
   },
   "dependencies": {
     "pkginfo": "0.2.x",
