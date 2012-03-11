@@ -17,7 +17,7 @@ vows.describe('union/streaming').addBatch({
                 chunks += chunk;
               });
               req.on('end', function () {
-                self.callback(chunks);
+                self.callback(null,chunks);
               });
             }
           ],
