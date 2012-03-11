@@ -1,10 +1,11 @@
 {
   "name": "union",
   "description": "A hybrid buffered / streaming middleware kernel backwards compatible with connect.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "Nodejitsu Inc. <info@nodejitsu.com>",
   "contributors": [
-    { "name": "Charlie Robbins", "email": "charlie.robbins@gmail.com" }
+    { "name": "Charlie Robbins", "email": "charlie.robbins@gmail.com" },
+    { "name": "Nuno Job", "email": "nunojobpinto@gmail.com" }
   ],
   "repository": {
     "type": "git",
