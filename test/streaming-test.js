@@ -12,12 +12,8 @@ vows.describe('union/streaming').addBatch({
         union.createServer({
           before: [
             function (req, res, next) {
-              var chunks = '';
-              req.on('data', function (chunk) {
-                chunks += chunk;
-              });
               req.on('end', function () {
-                self.callback(null,chunks);
+                self.callback(null, req.chunks);
               });
             }
           ],
