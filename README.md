@@ -91,8 +91,9 @@ Specification
     for `/favicon.ico`.
 
     @option after {Array} 
-    The `after` value is an array of stream filters, which are applied after the request handlers 
-    in `options.before`. Stream filters inherit from `union.ResponseStream`, which implements the 
+    The `after` value is an array of functions that return stream filters,
+    which are applied after the request handlers in `options.before`. 
+    Stream filters inherit from `union.ResponseStream`, which implements the 
     Node.js core streams api with a bunch of other goodies.
 
     @option limit {Object} 
