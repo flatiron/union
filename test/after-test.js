@@ -4,14 +4,16 @@ var assert = require('assert'),
     union = require('../');
 
 function stream_callback(cb) {
-  var stream   = new union.ResponseStream();
+  return function () {
+    var stream   = new union.ResponseStream();
 
-  stream.once("pipe", function (req) {
-    console.log(req);
-    return cb ? cb(null,req) : undefined;
-  });
+    stream.once("pipe", function (req) {
+      console.log(req);
+      return cb ? cb(null,req) : undefined;
+    });
 
-  return stream;
+    return stream;
+  };
 }
 
 vows.describe('union/after').addBatch({
