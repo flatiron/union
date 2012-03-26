@@ -143,6 +143,29 @@ An example of the `headers` option.
 }
 ```
 
+## Error Handling
+Error handler is similiar to middlware but takes an extra argument for error at the beginning.
+
+```js
+var handle = function (err, req, res) {
+  res.statusCode = err.status;
+  res.end(req.headers);
+};
+
+var server = union.createServer({
+  onError: handle,
+  before: [
+    favicon('./favicon.png'),
+    function (req, res) {
+      var found = router.dispatch(req, res);
+      if (!found) {
+        res.emit('next');
+      }
+    }
+  ]
+});
+```
+
 ## BufferedStream Constructor
 This constructor inherits from `Stream` and can buffer data up to `limit` bytes. It also implements `pause` and `resume` methods.
 
