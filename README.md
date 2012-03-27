@@ -21,6 +21,8 @@ There are a few ways to use `union`. Install the library using npm. You can add 
 ## Usage
 Union's request handling is [connect](https://github.com/senchalabs/connect)-compatible, meaning that all existing connect middlewares should work out-of-the-box with union.
 
+(Union v0.3.0 is connect > 2.0.3 compatible. [Testing](https://github.com/pksunkara/connect-union))
+
 In addition, the response object passed to middlewares listens for a "next" event, which is equivalent to calling `next()`. Flatiron middlewares are written in this manner, meaning they are not reverse-compatible with connect.
 
 ### A simple case
@@ -69,6 +71,49 @@ console.log('union with director running on 9090');
 ```
 
 To demonstrate the code, we use [director](https://github.com/flatiron/director). A light-weight, Client AND Server side URL-Router for Node.js and Single Page Apps!
+
+### A case with connect
+
+Code based on connect
+
+```js
+var connect = require('connect')
+  , http = require('http');
+
+var app = connect()
+  .use(connect.favicon())
+  .use(connect.logger('dev'))
+  .use(connect.static('public'))
+  .use(connect.directory('public'))
+  .use(connect.cookieParser('my secret here'))
+  .use(connect.session())
+  .use(function(req, res){
+    res.end('Hello from Connect!\n');
+  });
+
+http.createServer(app).listen(3000);
+```
+
+Code based on union
+
+```js
+var connect = require('connect')
+  , union = require('union');
+
+var server = union.createServer({
+  before: [
+    connect.favicon(),
+    connect.logger('dev'),
+    connect.static('public'),
+    connect.directory('public'),
+    connect.cookieParser('my secret here'),
+    connect.session(),
+    function(req, res) {
+      res.end('Hello from Connect!\n');
+    },
+  ]
+}).listen(3000);
+```
 
 # API
 
