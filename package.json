@@ -3,9 +3,9 @@
   "description": "A hybrid buffered / streaming middleware kernel backwards compatible with connect.",
   "version": "0.3.0",
   "author": "Nodejitsu Inc. <info@nodejitsu.com>",
-  "contributors": [
-    { "name": "Charlie Robbins", "email": "charlie.robbins@gmail.com" },
-    { "name": "Nuno Job", "email": "nunojobpinto@gmail.com" }
+  "maintainers": [
+    "indexzero <charlie@nodejitsu.com>",
+    "dscape <nuno@nodejitsu.com>"
   ],
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
     "test": "vows test/*-test.js --spec -i"
   },
   "main": "./lib",
-  "engines": { "node": ">= 0.4.0" }
+  "engines": {
+    "node": ">= 0.4.0"
+  }
 }
+
