@@ -32,7 +32,7 @@ server = union.createServer({
 });
 
 
-vows.describe('union/simple').addBatch({
+vows.describe('union/double-write').addBatch({
   "When using union": {
     "an http server which attempts to write to the response twice": {
       topic: function () {

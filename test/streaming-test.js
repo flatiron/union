@@ -12,11 +12,11 @@ vows.describe('union/streaming').addBatch({
         var self = this;
 
         union.createServer({
+          buffer: false,
           before: [
             function (req, res, next) {
               var chunks = '';
 
-              req.buffer = false;
               req.on('data', function (chunk) {
                 chunks += chunk;
               });

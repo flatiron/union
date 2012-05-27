@@ -16,6 +16,7 @@ vows.describe('union/body-parser').addBatch({
   "When using union with connect bodyParser()": {
     topic: function () {
       union.createServer({
+        buffer: false,
         before: [
           bodyParser(),
           function (req, res) {
