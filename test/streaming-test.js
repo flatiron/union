@@ -14,12 +14,18 @@ vows.describe('union/streaming').addBatch({
         union.createServer({
           before: [
             function (req, res, next) {
+              var chunks = '';
+
+              req.buffer = false;
+              req.on('data', function (chunk) {
+                chunks += chunk;
+              });
+
               req.on('end', function () {
-                self.callback(null, req.chunks);
+                self.callback(null, chunks);
               });
             }
-          ],
-          stream: true
+          ]
         }).listen(9000, function () {
           request.post('http://localhost:9000').write('hello world');
         });
