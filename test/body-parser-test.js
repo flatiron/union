@@ -35,7 +35,7 @@ vows.describe('union/body-parser').addBatch({
           body: JSON.stringify({ a: "foo", b: "bar" })
         }, this.callback);
       },
-      "should respond with a qs-decoded object": function (err, res, body) {
+      "should respond with a body-decoded object": function (err, res, body) {
         assert.isNull(err);
         assert.equal(res.statusCode, 200);
         assert.deepEqual(
