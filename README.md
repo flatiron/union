@@ -30,14 +30,12 @@ In addition, the response object passed to middlewares listens for a "next" even
 ``` js
 var fs = require('fs'),
     union = require('../lib'),
-    director = require('director'),
-    favicon = require('./middleware/favicon');
+    director = require('director');
 
 var router = new director.http.Router();
 
 var server = union.createServer({
   before: [
-    favicon('./favicon.png'),
     function (req, res) {
       var found = router.dispatch(req, res);
       if (!found) {
@@ -116,6 +114,8 @@ var server = union.createServer({
 }).listen(3000);
 ```
 
+### SPDY enabled server example
+
 # API
 
 ## union Static Members
@@ -149,6 +149,10 @@ Specification
     (optional) A value that specifies the certificate and key necessary to create an instance of 
     `https.Server`.
 
+    @option spdy {Object} 
+    (optional) A value that specifies the certificate and key necessary to create an instance of 
+    `spdy.Server`.
+
     @option headers {Object} 
     (optional) An object representing a set of headers to set in every outgoing response
 ```
@@ -169,15 +173,13 @@ var server = union.createServer({
 });
 ```
 
-An example of the `https` option.
+An example of the `https` or `spdy` option.
 
 ``` js
 {
-  https: {
-    cert: 'path/to/cert.pem',
-    key: 'path/to/key.pem',
-    ca: 'path/to/ca.pem'
-  }
+  cert: 'path/to/cert.pem',
+  key: 'path/to/key.pem',
+  ca: 'path/to/ca.pem'
 }
 ```
 
@@ -310,7 +312,7 @@ All tests are written with [vows][0] and should be run with [npm][1]:
 
 (The MIT License)
 
-Copyright (c) 2010 Nodejitsu Inc. <http://www.twitter.com/nodejitsu>
+Copyright (c) 2010-2012 Nodejitsu Inc. <http://www.twitter.com/nodejitsu>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
