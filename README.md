@@ -30,14 +30,12 @@ In addition, the response object passed to middlewares listens for a "next" even
 ``` js
 var fs = require('fs'),
     union = require('../lib'),
-    director = require('director'),
-    favicon = require('./middleware/favicon');
+    director = require('director');
 
 var router = new director.http.Router();
 
 var server = union.createServer({
   before: [
-    favicon('./favicon.png'),
     function (req, res) {
       var found = router.dispatch(req, res);
       if (!found) {
