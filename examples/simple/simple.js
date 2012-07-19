@@ -19,7 +19,7 @@ var server = union.createServer({
 });
 
 router.get('/foo', function () {
-  this.res.writeHead(200, { 'Content-Type': 'text/plain' })
+  this.res.writeHead(200, { 'Content-Type': 'text/plain' });
   this.res.end('hello world\n');
 });
 
@@ -35,6 +35,14 @@ router.post('/foo', { stream: true }, function () {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('wrote to a stream!');
   });
+});
+
+router.get('/redirect', function() {
+  this.res.redirect('http://www.google.com');
+});
+
+router.get('/custom_redirect', function() {
+  this.res.redirect('/foo', 301);
 });
 
 server.listen(9090);
