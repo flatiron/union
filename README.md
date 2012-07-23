@@ -247,7 +247,7 @@ Example
 var hs = union.HttpStream();
 ```
 
-## HttpStream Instance Memebers
+## HttpStream Instance Members
 
 ### url
 The url from the request.
