@@ -8,7 +8,6 @@ function stream_callback(cb) {
     var stream   = new union.ResponseStream();
 
     stream.once("pipe", function (req) {
-      console.log(req);
       return cb ? cb(null,req) : undefined;
     });
 
