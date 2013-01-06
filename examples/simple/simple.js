@@ -45,6 +45,16 @@ router.get('/custom_redirect', function() {
   this.res.redirect('/foo', 301);
 });
 
+router.get('/async', function () {
+  var self = this;
+  process.nextTick(function () {
+    self.req.on('end', function () {
+      self.res.end();
+    })
+    self.req.buffer = false;
+  });
+});
+
 server.listen(9090);
 console.log('union with director running on 9090');
 
