@@ -35,8 +35,10 @@ vows.describe('union/properties').addBatch({
         assert.equal(req.httpVersionMinor, 1);
       },
       'the `req` should have proper `socket` reference set': function (err, req) {
+        var net = require('net');
+
         assert.isNull(err);
-        assert.isTrue(!!req.socket);
+        assert.isTrue(req.socket instanceof net.Socket);
       }
     }
   }
