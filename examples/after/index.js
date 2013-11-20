@@ -4,7 +4,7 @@ var fs = require('fs'),
 
 var server = union.createServer({
   before: [ function (req,res) {
-    if(req.url === "/foo") {
+    if (req.url === "/foo") {
       res.text(201, "foo");
     }
   } ],
