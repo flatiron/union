@@ -1,5 +1,5 @@
-// In order to run this example you need to 
-// generate local ssl certificate 
+// In order to run this example you need to
+// generate local ssl certificate
 var union = require('../../lib'),
     director = require('director');
 
@@ -25,6 +25,6 @@ router.get(/foo/, function () {
   this.res.end('hello world\n');
 });
 
-server.listen(9090, function(){
+server.listen(9090, function () {
   console.log('union with director running on 9090 with SPDY');
 });

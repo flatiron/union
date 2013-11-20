@@ -54,10 +54,10 @@ router.post(/foo/, { stream: true }, function () {
   var req = this.req,
       res = this.res,
       writeStream;
-      
+
   writeStream = fs.createWriteStream(Date.now() + '-foo.txt');
   req.pipe(writeStream);
-  
+
   writeStream.on('close', function () {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('wrote to a stream!');
@@ -85,7 +85,7 @@ var app = connect()
   .use(connect.directory('public'))
   .use(connect.cookieParser('my secret here'))
   .use(connect.session())
-  .use(function(req, res){
+  .use(function (req, res) {
     res.end('Hello from Connect!\n');
   });
 
@@ -107,7 +107,7 @@ var server = union.createServer({
     connect.directory('public'),
     connect.cookieParser('my secret here'),
     connect.session(),
-    function(req, res) {
+    function (req, res) {
       res.end('Hello from Connect!\n');
     },
   ]
@@ -128,32 +128,32 @@ Specification
 ```
   function createServer(options)
 
-  @param options {Object} 
+  @param options {Object}
   An object literal that represents the configuration for the server.
-    
-    @option before {Array} 
-    The `before` value is an array of middlewares, which are used to route and serve incoming 
-    requests. For instance, in the example, `favicon` is a middleware which handles requests 
+
+    @option before {Array}
+    The `before` value is an array of middlewares, which are used to route and serve incoming
+    requests. For instance, in the example, `favicon` is a middleware which handles requests
     for `/favicon.ico`.
 
-    @option after {Array} 
+    @option after {Array}
     The `after` value is an array of functions that return stream filters,
-    which are applied after the request handlers in `options.before`. 
-    Stream filters inherit from `union.ResponseStream`, which implements the 
+    which are applied after the request handlers in `options.before`.
+    Stream filters inherit from `union.ResponseStream`, which implements the
     Node.js core streams api with a bunch of other goodies.
 
-    @option limit {Object} 
+    @option limit {Object}
     (optional) A value, passed to internal instantiations of `union.BufferedStream`.
 
-    @option https {Object} 
-    (optional) A value that specifies the certificate and key necessary to create an instance of 
+    @option https {Object}
+    (optional) A value that specifies the certificate and key necessary to create an instance of
     `https.Server`.
 
-    @option spdy {Object} 
-    (optional) A value that specifies the certificate and key necessary to create an instance of 
+    @option spdy {Object}
+    (optional) A value that specifies the certificate and key necessary to create an instance of
     `spdy.Server`.
 
-    @option headers {Object} 
+    @option headers {Object}
     (optional) An object representing a set of headers to set in every outgoing response
 ```
 
@@ -187,7 +187,7 @@ An example of the `headers` option.
 
 ``` js
 {
-  'x-powered-by': 'your-sweet-application v10.9.8'	
+  'x-powered-by': 'your-sweet-application v10.9.8'
 }
 ```
 
@@ -221,8 +221,8 @@ Specification
 
 ```
   function BufferedStream(limit)
-  
-  @param limit {Number} 
+
+  @param limit {Number}
   the limit for which the stream can be buffered
 ```
 
@@ -265,7 +265,7 @@ Example
 
 ```js
 httpStream.headers = '';
-``` 
+```
 
 ### method
 The HTTP method ("GET", "POST", etc).

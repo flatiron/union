@@ -31,8 +31,8 @@ var icon;
  * @return {String}
  * @api public
  */
- 
-exports.md5 = function(str, encoding){
+
+exports.md5 = function (str, encoding) {
   return crypto
     .createHash('md5')
     .update(str)
@@ -50,11 +50,11 @@ exports.md5 = function(str, encoding){
  * Examples:
  *
  *     connect.createServer(
- *       connect.favicon()    
+ *       connect.favicon()
  *     );
  *
  *     connect.createServer(
- *       connect.favicon(__dirname + '/public/favicon.ico')    
+ *       connect.favicon(__dirname + '/public/favicon.ico')
  *     );
  *
  * @param {String} path
@@ -63,18 +63,18 @@ exports.md5 = function(str, encoding){
  * @api public
  */
 
-module.exports = function favicon(path, options){
+module.exports = function favicon(path, options) {
   var options = options || {}
     , path = path || __dirname + '/../public/favicon.ico'
     , maxAge = options.maxAge || 86400000;
 
-  return function favicon(req, res, next){
+  return function favicon(req, res, next) {
     if ('/favicon.ico' == req.url) {
       if (icon) {
         res.writeHead(200, icon.headers);
         res.end(icon.body);
       } else {
-        fs.readFile(path, function(err, buf){
+        fs.readFile(path, function (err, buf) {
           if (err) return next(err);
           icon = {
             headers: {

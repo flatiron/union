@@ -50,31 +50,31 @@ vows.describe('union/simple').addBatch({
         }
       },
       "a GET request to `/redirect`": {
-        topic: function() {
+        topic: function () {
           request.get({
             url: 'http://localhost:9090/redirect',
             followRedirect: false
           }, this.callback);
         },
-        "it should redirect to `http://www.google.com`": function(err, res, body) {
+        "it should redirect to `http://www.google.com`": function (err, res, body) {
           assert.equal(res.statusCode, 302);
           assert.equal(res.headers.location, "http://www.google.com");
         }
       },
       "a GET request to `/custom_redirect`": {
-        topic: function() {
+        topic: function () {
           request.get({
             url: 'http://localhost:9090/custom_redirect',
             followRedirect: false
           }, this.callback);
         },
-        "it should redirect to `/foo`": function(err, res, body) {
+        "it should redirect to `/foo`": function (err, res, body) {
           assert.equal(res.statusCode, 301);
           assert.equal(res.headers.location, "http://localhost:9090/foo");
         }
       },
       "a GET request to `/async`": {
-        topic: function() {
+        topic: function () {
           request.get({
             url: 'http://localhost:9090/async',
             timeout: 500

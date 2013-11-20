@@ -11,7 +11,7 @@ vows.describe('union/header').addBatch({
         var server = union.createServer({
           before: [
             function (req, res) {
-              res.on('header', function() {
+              res.on('header', function () {
                 callback(null, res);
               });
               res.writeHead(200, { 'content-type': 'text' });
@@ -19,7 +19,7 @@ vows.describe('union/header').addBatch({
             }
           ]
         });
-        server.listen(9092, function() {
+        server.listen(9092, function () {
           request('http://localhost:9092/');
         });
       },

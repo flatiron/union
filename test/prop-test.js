@@ -18,7 +18,7 @@ vows.describe('union/properties').addBatch({
             }
           ]
         });
-        server.listen(9092, function() {
+        server.listen(9092, function () {
           request('http://localhost:9092/');
         });
       },

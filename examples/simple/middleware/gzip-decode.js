@@ -17,10 +17,10 @@ GzipDecode.prototype.decode = function (source) {
   source.pipe(this.decoder);
 }
 
-GzipDecoderStack.prototype._onGunzipData = function(chunk) {
+GzipDecoderStack.prototype._onGunzipData = function (chunk) {
   this.emit('data', chunk);
 }
 
-GzipDecoderStack.prototype._onGunzipEnd = function() {
+GzipDecoderStack.prototype._onGunzipEnd = function () {
   this.emit('end');
 }

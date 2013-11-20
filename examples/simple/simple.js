@@ -27,21 +27,21 @@ router.post('/foo', { stream: true }, function () {
   var req = this.req,
       res = this.res,
       writeStream;
-      
+
   writeStream = fs.createWriteStream(__dirname + '/' + Date.now() + '-foo.txt');
   req.pipe(writeStream);
-  
+
   writeStream.on('close', function () {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('wrote to a stream!');
   });
 });
 
-router.get('/redirect', function() {
+router.get('/redirect', function () {
   this.res.redirect('http://www.google.com');
 });
 
-router.get('/custom_redirect', function() {
+router.get('/custom_redirect', function () {
   this.res.redirect('/foo', 301);
 });
 
