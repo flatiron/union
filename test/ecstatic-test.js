@@ -5,7 +5,7 @@
  * MIT LICENSE
  *
  */
- 
+
 var assert = require('assert'),
     ecstatic = require('ecstatic')(__dirname + '/fixtures/static'),
     request = require('request'),
@@ -19,11 +19,11 @@ vows.describe('union/ecstatic').addBatch({
         before: [
           ecstatic
         ]
-      }).listen(8081, this.callback);
+      }).listen(18082, this.callback);
     },
     "a request to /some-file.txt": {
       topic: function () {
-        request({ uri: 'http://localhost:8081/some-file.txt' }, this.callback);
+        request({ uri: 'http://localhost:18082/some-file.txt' }, this.callback);
       },
       "should respond with `hello world`": function (err, res, body) {
         assert.isNull(err);
@@ -32,7 +32,7 @@ vows.describe('union/ecstatic').addBatch({
     },
     "a request to /404.txt (which does not exist)": {
       topic: function () {
-        request({ uri: 'http://localhost:8081/404.txt' }, this.callback);
+        request({ uri: 'http://localhost:18082/404.txt' }, this.callback);
       },
       "should respond with 404 status code": function (err, res, body) {
         assert.isNull(err);
