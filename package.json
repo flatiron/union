@@ -19,7 +19,7 @@
     "ecstatic": "git://github.com/jesusabdullah/node-ecstatic.git",
     "director": "1.x.x",
     "request": "2.x.x",
-    "vows": "0.6.x",
+    "vows": "0.7.x",
     "connect": "2.3.x"
   },
   "scripts": {
