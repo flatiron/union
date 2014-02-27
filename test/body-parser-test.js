@@ -7,7 +7,7 @@
  */
 
 var assert = require('assert'),
-    bodyParser = require('connect').bodyParser,
+    connect = require('connect'),
     request = require('request'),
     vows = require('vows'),
     union = require('../');
@@ -18,7 +18,8 @@ vows.describe('union/body-parser').addBatch({
       union.createServer({
         buffer: false,
         before: [
-          bodyParser(),
+          connect.urlencoded(),
+          connect.json(),
           function (req, res) {
             res.end(JSON.stringify(req.body, true, 2));
           }

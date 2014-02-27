@@ -1,7 +1,7 @@
 {
   "name": "union",
   "description": "A hybrid buffered / streaming middleware kernel backwards compatible with connect.",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "author": "Nodejitsu Inc. <info@nodejitsu.com>",
   "maintainers": [
     "indexzero <charlie@nodejitsu.com>",
@@ -20,7 +20,7 @@
     "director": "1.x.x",
     "request": "2.x.x",
     "vows": "0.7.x",
-    "connect": "2.3.x"
+    "connect": "2.13.x"
   },
   "scripts": {
     "test": "vows test/*-test.js --spec -i"
