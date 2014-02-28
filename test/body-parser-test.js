@@ -13,7 +13,7 @@ var assert = require('assert'),
     union = require('../');
 
 vows.describe('union/body-parser').addBatch({
-  "When using union with connect bodyParser()": {
+  "When using union with connect body parsing via urlencoded() or json()": {
     topic: function () {
       union.createServer({
         buffer: false,
