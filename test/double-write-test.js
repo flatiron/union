@@ -1,7 +1,7 @@
 /*
  * simple-test.js: Simple tests for basic streaming and non-streaming HTTP requests with union.
  *
- * (C) 2011, Nodejitsu Inc.
+ * (C) 2011, Charlie Robbins & the Contributors
  * MIT LICENSE
  *
  */
@@ -16,7 +16,7 @@ var assert = require('assert'),
 
 var doubleWrite = false,
     server;
-    
+
 server = union.createServer({
   before: [
     function (req, res) {
@@ -27,7 +27,7 @@ server = union.createServer({
       doubleWrite = true;
       res.json(200, { 'hello': 'world' });
       res.emit('next');
-    }    
+    }
   ]
 });
 

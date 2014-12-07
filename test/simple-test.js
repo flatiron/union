@@ -1,7 +1,7 @@
 /*
  * simple-test.js: Simple tests for basic streaming and non-streaming HTTP requests with union.
  *
- * (C) 2011, Nodejitsu Inc.
+ * (C) 2011, Charlie Robbins & the Contributors
  * MIT LICENSE
  *
  */

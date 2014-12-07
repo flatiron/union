@@ -2,9 +2,8 @@
   "name": "union",
   "description": "A hybrid buffered / streaming middleware kernel backwards compatible with connect.",
   "version": "0.4.3",
-  "author": "Nodejitsu Inc. <info@nodejitsu.com>",
+  "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "maintainers": [
-    "indexzero <charlie@nodejitsu.com>",
     "dscape <nuno@nodejitsu.com>"
   ],
   "repository": {
@@ -12,14 +11,13 @@
     "url": "http://github.com/flatiron/union.git"
   },
   "dependencies": {
-    "pkginfo": "0.3.x",
-    "qs": "1.2.x"
+    "qs": "~2.3.3"
   },
   "devDependencies": {
     "ecstatic": "0.5.x",
     "director": "1.x.x",
-    "request": "2.x.x",
-    "vows": "0.7.x",
+    "request": "2.29.x",
+    "vows": "0.8.x",
     "connect": "2.22.x"
   },
   "scripts": {
@@ -27,7 +25,7 @@
   },
   "main": "./lib",
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 0.8.0"
   }
 }
 
