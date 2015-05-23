@@ -24,6 +24,7 @@
     "test": "vows test/*-test.js --spec -i"
   },
   "main": "./lib",
+  "license": "MIT",
   "engines": {
     "node": ">= 0.8.0"
   }
