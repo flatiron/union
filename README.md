@@ -21,7 +21,7 @@ There are a few ways to use `union`. Install the library using npm. You can add 
 ## Usage
 Union's request handling is [connect](https://github.com/senchalabs/connect)-compatible, meaning that all existing connect middlewares should work out-of-the-box with union.
 
-**(Union 0.3.x is compatible with connect >= 2.1.0, [Extensively Tested](https://github.com/pksunkara/connect-union))**
+**(Union 0.3.x is compatible with connect >= 2.1.0)**
 
 In addition, the response object passed to middlewares listens for a "next" event, which is equivalent to calling `next()`. Flatiron middlewares are written in this manner, meaning they are not reverse-compatible with connect.
 
