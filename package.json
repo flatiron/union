@@ -11,7 +11,7 @@
     "url": "http://github.com/flatiron/union.git"
   },
   "dependencies": {
-    "qs": "~2.3.3"
+    "qs": "^6.4.0"
   },
   "devDependencies": {
     "ecstatic": "0.5.x",
