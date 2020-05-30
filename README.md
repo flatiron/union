@@ -179,6 +179,7 @@ An example of the `https` or `spdy` option.
 {
   cert: 'path/to/cert.pem',
   key: 'path/to/key.pem',
+  passphrase: '<secret>',
   ca: 'path/to/ca.pem'
 }
 ```
