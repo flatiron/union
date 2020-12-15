@@ -14,7 +14,7 @@
     "qs": "^6.4.0"
   },
   "devDependencies": {
-    "ecstatic": "0.5.x",
+    "ecstatic": "4.1.x",
     "director": "1.x.x",
     "request": "2.29.x",
     "vows": "0.8.0",
