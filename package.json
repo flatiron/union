@@ -18,7 +18,7 @@
     "director": "1.x.x",
     "request": "2.29.x",
     "vows": "0.8.0",
-    "connect": "2.22.x"
+    "connect": "3.7.x"
   },
   "scripts": {
     "test": "vows test/*-test.js --spec -i"
