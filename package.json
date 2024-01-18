@@ -21,7 +21,11 @@
     "connect": "2.22.x"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "test": "vows test/*-test.js --spec -i"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.11"
   },
   "main": "./lib",
   "engines": {
