@@ -6,6 +6,7 @@
   "maintainers": [
     "dscape <nuno@nodejitsu.com>"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "http://github.com/flatiron/union.git"
