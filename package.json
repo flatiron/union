@@ -3,6 +3,7 @@
   "description": "A hybrid buffered / streaming middleware kernel backwards compatible with connect.",
   "version": "0.6.0",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
+  "license": "MIT",
   "maintainers": [
     "dscape <nuno@nodejitsu.com>"
   ],
